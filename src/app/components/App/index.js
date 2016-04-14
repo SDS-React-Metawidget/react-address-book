@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
 
 
 @asyncConnect({
@@ -29,9 +28,7 @@ export default class App extends Component { // eslint-disable-line react/prefer
   render() {
     return (
       <div>
-        <Helmet title="Page Title" />
-        {__CLIENT__ && <span>Test</span>}
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }

@@ -4,7 +4,6 @@ import path from 'path';
 
 
 gulp.task('clean', done => {
-  // TODO: glob?
-  del.sync(path.resolve(__dirname, '..', 'dist'));
+  del.sync(path.resolve(__dirname, '..', 'dist', '*'));
   done();
 });

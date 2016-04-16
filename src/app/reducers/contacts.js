@@ -3,7 +3,7 @@ const intialState = {
     {
       firstName: 'Nathan',
       lastName: 'Hardy',
-      details: 'Nathan.J.Hardy@student.uts.edu.au',
+      details: 'email@example.org',
     },
   ],
 };

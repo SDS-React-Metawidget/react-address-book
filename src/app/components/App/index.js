@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 
+import 'app/assets/stylus/reset.styl';
+import './styles.styl';
+
 
 @asyncConnect({
   promise: (params, { store: { dispatch, getState } }) => {

@@ -35,7 +35,7 @@ export default function mainMiddleware(req, res) {
 
         res.send(`<!DOCTYPE html>\n${html}`);
       }).catch(err => {
-        console.error('RENDERING ERROR:', err); // eslint-disable-line no-console
+        console.error('RENDERING ERROR:', err.stack || err); // eslint-disable-line no-console
         res.status(500);
         res.send('Server Error');
         // TODO: Render using the React app

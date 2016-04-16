@@ -1,9 +1,32 @@
 import path from 'path';
 import { identity } from 'lodash';
-import { BannerPlugin, DefinePlugin, HotModuleReplacementPlugin, optimize } from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import {
+  BannerPlugin,
+  DefinePlugin,
+  HotModuleReplacementPlugin,
+  NoErrorsPlugin,
+  optimize,
+} from 'webpack';
 import nodeExternals from 'webpack-node-externals';
-import { StatsWriterPlugin } from 'webpack-stats-plugin';
+import WriteManifestPlugin from './plugins/WriteManifestPlugin';
 
+
+const hashType = config => {
+  return config.optimise ? 'chunkhash' : 'hash';
+};
+
+const cssLoader = config => {
+  const cssLoaderQuery = 'modules&localIdentName=[path][name]--[local]--[hash:base64:5]';
+  if (config.type === 'server') {
+    return `css/locals?${cssLoaderQuery}!stylus`;
+  }
+  return config.optimise
+    ? ExtractTextPlugin.extract(
+      `css?${cssLoaderQuery}!stylus`
+    )
+    : `style?singleton!css?${cssLoaderQuery}!stylus`;
+};
 
 export default function webpackFactory(config, appConfig) {
   return {
@@ -15,26 +38,30 @@ export default function webpackFactory(config, appConfig) {
       client: {
         bundle: [
           config.hotReload && 'webpack-dev-server/client?/',
-          config.hotReload && 'webpack/hot/dev-server',
+          config.hotReload && 'webpack/hot/only-dev-server',
           path.resolve(__dirname, '..', '..', 'src', 'client', 'index.js'),
         ].filter(identity),
       },
-      server: { server: [path.resolve(__dirname, '..', '..', 'src', 'server', 'index.js')] },
+      server: {
+        server: [
+          path.resolve(__dirname, '..', '..', 'src', 'server', 'index.js'),
+        ],
+      },
     }[config.type],
 
     output: {
       filename: config.type === 'server'
         ? '[name].js'
-        : `[name]-[${config.debug ? 'hash' : 'chunkhash'}:6].js`,
+        : `[name]-[${hashType(config)}:6].js`,
       path: path.resolve(__dirname, '..', '..', 'dist'),
-      publicPath: `http://localhost:${appConfig.port}/dist`,
+      publicPath: `http://localhost:${appConfig.port}/dist/`,
     },
 
     target: { client: 'web', server: 'node' }[config.type],
 
     externals: [config.type === 'server' && nodeExternals()].filter(identity),
 
-    devtool: 'source-map', // config.debug ? 'cheap-module-inline-source-map' : 'hidden-source-map',
+    devtool: config.debug || config.type === 'server' ? 'cheap-module-inline-source-map' : 'hidden-source-map',
 
     debug: true,
 
@@ -49,15 +76,14 @@ export default function webpackFactory(config, appConfig) {
           test: /\.json$/,
           loader: 'json',
         },
+        {
+          test: /\.styl$/,
+          loader: cssLoader(config),
+        },
       ],
     },
 
     plugins: [
-      config.hotReload && new HotModuleReplacementPlugin(),
-      config.type === 'server' && config.debug && new BannerPlugin('require("source-map-support").install();', {
-        raw: true,
-        entryOnly: false,
-      }),
       new DefinePlugin({
         __CLIENT__: config.type === 'client',
         __DEV__: config.debug,
@@ -67,24 +93,22 @@ export default function webpackFactory(config, appConfig) {
           NODE_ENV: JSON.stringify('production'),
         },
       }),
-      config.optimise && new optimize.UglifyJsPlugin(),
-      config.type === 'client' && new StatsWriterPlugin({
-        filename: 'webpackStats.json',
-        transform: data => {
-          const js = {};
-          const css = {};
-          Object.entries(data.assetsByChunkName).forEach(([entry, files]) => {
-            (Array.isArray(files) ? files : [files]).forEach(file => {
-              if (file.endsWith('.js')) js[entry] = `/dist/${file}`;
-              if (file.endsWith('.css')) css[entry] = `/dist/${file}`;
-            });
-          });
-          return JSON.stringify({
-            js,
-            css,
-          }, null, 2);
+      new NoErrorsPlugin(),
+      config.hotReload && new HotModuleReplacementPlugin(),
+      config.type === 'client' && config.optimise &&
+      new ExtractTextPlugin('[name]-[contenthash:6].css', {
+        allChunks: true,
+      }),
+      config.type === 'server' && config.debug && new BannerPlugin('require("source-map-support").install();', {
+        raw: true,
+        entryOnly: false,
+      }),
+      config.optimise && new optimize.UglifyJsPlugin({
+        compressor: {
+          warnings: false,
         },
       }),
+      config.type === 'client' && new WriteManifestPlugin(config),
     ].filter(identity),
 
     resolve: {

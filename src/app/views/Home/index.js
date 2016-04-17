@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { Link } from 'react-router';
 
 import ContactsPanel from 'app/components/ContactsPanel';
 import SearchPanel from 'app/components/SearchPanel';

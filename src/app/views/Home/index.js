@@ -5,6 +5,9 @@ import Helmet from 'react-helmet';
 import ContactsPanel from 'app/components/ContactsPanel';
 import SearchPanel from 'app/components/SearchPanel';
 
+import styles from './styles.styl';
+import addressBookImg from 'app/assets/images/address-book.png';
+
 
 @connect(state => {
   return {
@@ -21,7 +24,13 @@ export default class HomeView extends Component { // eslint-disable-line react/p
     return (
       <div>
         <Helmet title="Home | React Address Book" />
-        <SearchPanel />
+        <div className={styles.top}>
+          <img className={styles.img} src={addressBookImg} />
+          <SearchPanel />
+        </div>
+        <div>
+          <Link to="/contact">Add New Contact</Link>
+        </div>
         <ContactsPanel filter={filter} />
       </div>
     );

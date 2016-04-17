@@ -19,7 +19,6 @@ export default class SearchPanel extends Component {
     const firstName = findDOMNode(this.refs.fname).value;
     const lastName = findDOMNode(this.refs.lname).value;
 
-    console.log('Search:', { firstName, lastName });
     this.props.search(pickBy({
       firstName,
       lastName,
@@ -30,10 +29,10 @@ export default class SearchPanel extends Component {
     return (
       <div>
         <label htmlFor="fname">First name:</label>
-        <input id="fname" ref="fname" type="text" />
+        <input id="fname" ref="fname" type="text" onChange={this.search} />
         <br />
         <label htmlFor="lname">Last name:</label>
-        <input id="lname" ref="lname" type="text" />
+        <input id="lname" ref="lname" type="text" onChange={this.search} />
         <br />
         <button onClick={this.search}>Search</button>
       </div>

@@ -2,7 +2,7 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 import fetchMiddleware from 'app/middleware/fetch';
-import reducer from 'app/reducers';
+import reducer from '../reducers';
 
 
 export default function create(history, data) {

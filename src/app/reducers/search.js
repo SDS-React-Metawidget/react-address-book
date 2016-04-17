@@ -8,7 +8,6 @@ const initialState = {
 export default function search(state = initialState, action) {
   switch (action.type) {
     case SEARCH:
-    console.log('REDUCER:', action.filter);
       return {
         ...state,
         filter: action.filter,

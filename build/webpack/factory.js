@@ -39,11 +39,13 @@ export default function webpackFactory(config, appConfig) {
         bundle: [
           config.hotReload && 'webpack-dev-server/client?/',
           config.hotReload && 'webpack/hot/only-dev-server',
+          'babel-polyfill',
           path.resolve(__dirname, '..', '..', 'src', 'client', 'index.js'),
         ].filter(identity),
       },
       server: {
         server: [
+          'babel-polyfill',
           path.resolve(__dirname, '..', '..', 'src', 'server', 'index.js'),
         ],
       },
@@ -79,6 +81,10 @@ export default function webpackFactory(config, appConfig) {
         {
           test: /\.styl$/,
           loader: cssLoader(config),
+        },
+        {
+          test: /\.(?:png)$/,
+          loader: 'url?limit=5120&name=[name]-[hash:6].[ext]',
         },
       ],
     },

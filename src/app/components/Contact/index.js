@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 
-const Contact = ({ firstName, lastName, details }) => {
+const Contact = ({ id, firstName, lastName, details }) => {
   return (
     <div>
-      <span>{lastName}, {firstName} | {details}</span>
+      <span><Link to={`/contact/${id}`}>{lastName}, {firstName}</Link> | {details}</span>
     </div>
   );
 };
 
 Contact.propTypes = {
+  id: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   details: PropTypes.string,

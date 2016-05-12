@@ -30,7 +30,7 @@ export default class HomeView extends Component { // eslint-disable-line react/p
           <SearchPanel />
         </div>
         <div>
-          <Link to="/contact">Add New Contact</Link>
+          <Link to="/contact">Create Contact</Link>
         </div>
         <ContactsPanel filter={filter} />
       </div>

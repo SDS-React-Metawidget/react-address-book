@@ -9,7 +9,13 @@ import Contact from 'app/lib/contact';
 
 
 const sampleContact = new Contact({
-  id: uuid(),
+  id: 1,
+  firstName: 'Nathan',
+  lastName: 'Hardy',
+  details: 'email@example.org',
+});
+const sampleContact2 = new Contact({
+  id: 2,
   firstName: 'Nathan',
   lastName: 'Hardy',
   details: 'email@example.org',
@@ -17,6 +23,7 @@ const sampleContact = new Contact({
 const intialState = {
   contacts: {
     [sampleContact.id]: sampleContact,
+    [sampleContact2.id]: sampleContact2,
   },
 };
 

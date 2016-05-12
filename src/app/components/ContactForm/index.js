@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
+import metawidget from 'metawidget';
 
 import { addContact, updateContact } from 'app/actions/contacts';
+import Metawidget from 'app/components/Metawidget';
 
 
 @connect(null, {
@@ -24,7 +26,7 @@ export default class SearchPanel extends Component {
     const lastName = findDOMNode(this.refs.lname).value;
     const details = findDOMNode(this.refs.details).value;
 
-    if(this.props.id) {
+    if (this.props.id) {
       this.props.updateContact(this.props.id, { firstName, lastName, details });
     } else {
       this.props.addContact({ firstName, lastName, details });
@@ -35,6 +37,20 @@ export default class SearchPanel extends Component {
     const { firstName, lastName, details } = this.props;
     return (
       <div>
+        <Metawidget
+          toInspect={this.props}
+          config={{
+            inspector: new metawidget.inspector.CompositeInspector([
+              new metawidget.inspector.PropertyTypeInspector(),
+              new metawidget.inspector.JsonSchemaInspector({
+                properties: {
+                  details: {
+                    large: true,
+                  },
+                },
+              }),
+            ]),
+          }} />
         <label htmlFor="fname">First name:</label>
         <input id="fname" ref="fname" type="text" value={firstName} />
         <br />

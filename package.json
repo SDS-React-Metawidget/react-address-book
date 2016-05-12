@@ -60,6 +60,7 @@
     "redux-async-connect": "^0.1.13",
     "redux-thunk": "^2.0.1",
     "source-map-support": "^0.4.0",
+    "uncamelcase": "0.0.2",
     "uuid": "^2.0.2"
   }
 }

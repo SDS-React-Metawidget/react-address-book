@@ -17,7 +17,9 @@ export function updateContact(id, details) {
   };
 }
 
-export function deleteConatct(id) {
+export function deleteContact(id) {
+  //this didnt log, but it worked.
+  console.log(id + ' - its lit.');
   return {
     type: DELETE_CONTACT,
     id,

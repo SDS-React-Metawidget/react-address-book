@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import 'app/assets/stylus/reset.styl';
 import './styles.styl';
 

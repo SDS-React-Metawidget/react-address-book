@@ -1,6 +1,4 @@
-import React, { Component, PropTypes } from 'react';
-import { asyncConnect } from 'redux-async-connect';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 
@@ -15,7 +13,6 @@ export default class EditContactView extends Component { // eslint-disable-line 
         <Helmet title="Creating new contact | React Address Book" />
         <Link to="/">Home</Link>
         <ContactForm />
-        
       </div>
     );
   }

@@ -5,6 +5,7 @@ import metawidget from 'metawidget';
 export default class Metawidget extends Component {
   static propTypes = {
     toInspect: PropTypes.object,
+    config: PropTypes.object,
   };
 
   buildWidget = (elementName, attributes, mw) => {

@@ -34,6 +34,9 @@ function addContact(state, details) {
 function deleteContact(state, id) {
   const newState = {
     ...state,
+    contacts: {
+      ...state.contacts,
+    },
   };
   delete newState.contacts[id];
   return newState;

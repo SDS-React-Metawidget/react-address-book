@@ -17,7 +17,6 @@ export default class Remove extends Component {
   };
 
   remove = () => {
-    console.log(this.props.id); // This doesn't log tho.
     this.props.deleteContact(this.props.id);
   };
 

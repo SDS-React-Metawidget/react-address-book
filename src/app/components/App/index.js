@@ -38,7 +38,9 @@ export default class App extends Component { // eslint-disable-line react/prefer
     return (
       <div>
         <Header />
-        {this.props.children}
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }

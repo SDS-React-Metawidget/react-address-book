@@ -22,7 +22,7 @@ export default class Remove extends Component {
 
   render() {
     return (
-      <button onClick={this.remove}>Remove</button>
+      <button className="btn btn-default" onClick={this.remove}>Remove</button>
     );
   }
 }

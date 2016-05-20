@@ -22,7 +22,17 @@ export default class SearchPanel extends Component {
 
   render() {
     return (
-      <div>
+      <table className="table table-striped">
+        
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
         {this.getContacts().map((contact) => {
           return (
             <Contact
@@ -30,7 +40,8 @@ export default class SearchPanel extends Component {
               {...contact} />
           );
         })}
-      </div>
+        </tbody>
+      </table>
     );
   }
 }

@@ -34,18 +34,36 @@ export default class SearchPanel extends Component {
   render() {
     const { firstName, lastName, details } = this.props;
     return (
-      <div>
-        <label htmlFor="fname">First name:</label>
-        <input id="fname" ref="fname" type="text" value={firstName} />
-        <br />
-        <label htmlFor="lname">Last name:</label>
-        <input id="lname" ref="lname" type="text" value={lastName} />
-        <br />
+      <form>
+        <div className="row">
+          <div className="form-group col-md-6">
+            <label htmlFor="fname">First name:</label>
+            <input className="form-control" id="fname" ref="fname" type="text" value={firstName} />
+          </div>
+          
+          <div className="form-group col-md-6">
+            <label htmlFor="lname">Last name:</label>
+            <input className="form-control" id="lname" ref="lname" type="text" value={lastName} />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="form-group col-md-6">
+            <label htmlFor="fname">First name:</label>
+            <input className="form-control" id="fname" ref="fname" type="text" value={firstName} />
+          </div>
+          
+          <div className="form-group col-md-6">
+            <label htmlFor="lname">Last name:</label>
+            <input className="form-control" id="lname" ref="lname" type="text" value={lastName} />
+          </div>
+        </div>
+
         <label htmlFor="details">Details:</label>
         <textarea id="details" ref="details">{details}</textarea>
         <br />
-        <button onClick={this.save}>Save</button>
-      </div>
+        <button className="btn btn-default" onClick={this.save}>Save</button>
+      </form>
     );
   }
 }

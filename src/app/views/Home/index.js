@@ -19,14 +19,15 @@ export default class HomeView extends Component { // eslint-disable-line react/p
   static propTypes = {
     filter: PropTypes.object,
   };
-
+  //`${styles.img} img-rounded`
+  //          <img className={styles.img} src={addressBookImg} />
   render() {
     const { filter } = this.props;
     return (
       <div>
         <Helmet title="Home | React Address Book" />
         <div className={styles.top}>
-          <img className={styles.img} src={addressBookImg} />
+
           <SearchPanel />
         </div>
         <div>

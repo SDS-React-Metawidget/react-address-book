@@ -27,15 +27,13 @@ export default class SearchPanel extends Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="fname">First name:</label>
-        <input id="fname" ref="fname" type="text" onChange={this.search} />
-        <br />
-        <label htmlFor="lname">Last name:</label>
-        <input id="lname" ref="lname" type="text" onChange={this.search} />
-        <br />
-        <button onClick={this.search}>Search</button>
-      </div>
+     <label htmlFor="fname">First name:</label>
+      <input id="fname" ref="fname" type="text" onChange={this.search} />
+      <br />
+      <label htmlFor="lname">Last name:</label>
+      <input id="lname" ref="lname" type="text" onChange={this.search} />
+      <br />
+      <button onClick={this.search}>Search</button>
     );
   }
 }

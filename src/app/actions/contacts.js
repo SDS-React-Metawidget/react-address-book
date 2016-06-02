@@ -17,7 +17,7 @@ export function updateContact(id, details) {
   };
 }
 
-export function deleteConatct(id) {
+export function deleteContact(id) {
   return {
     type: DELETE_CONTACT,
     id,

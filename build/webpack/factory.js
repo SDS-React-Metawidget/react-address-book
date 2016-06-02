@@ -16,7 +16,7 @@ const hashType = config => {
   return config.optimise ? 'chunkhash' : 'hash';
 };
 
-const cssLoader = config => {
+const stylusLoader = config => {
   const cssLoaderQuery = 'modules&localIdentName=[path][name]--[local]--[hash:base64:5]';
   if (config.type === 'server') {
     return `css/locals?${cssLoaderQuery}!stylus`;
@@ -26,6 +26,17 @@ const cssLoader = config => {
       `css?${cssLoaderQuery}!stylus`
     )
     : `style?singleton!css?${cssLoaderQuery}!stylus`;
+};
+
+const cssLoader = config => {
+  if (config.type === 'server') {
+    return 'css';
+  }
+  return config.optimise
+    ? ExtractTextPlugin.extract(
+      'css'
+    )
+    : 'style?singleton!css';
 };
 
 export default function webpackFactory(config, appConfig) {
@@ -61,7 +72,9 @@ export default function webpackFactory(config, appConfig) {
 
     target: { client: 'web', server: 'node' }[config.type],
 
-    externals: [config.type === 'server' && nodeExternals()].filter(identity),
+    externals: [config.type === 'server' && nodeExternals({
+      whitelist: ['bootstrap/dist/css/bootstrap.css'],
+    })].filter(identity),
 
     devtool: config.debug || config.type === 'server' ? 'cheap-module-inline-source-map' : 'hidden-source-map',
 
@@ -80,10 +93,14 @@ export default function webpackFactory(config, appConfig) {
         },
         {
           test: /\.styl$/,
+          loader: stylusLoader(config),
+        },
+        {
+          test: /\.css$/,
           loader: cssLoader(config),
         },
         {
-          test: /\.(?:png)$/,
+          test: /\.(?:png|svg|woff2?|eot|ttf)$/,
           loader: 'url?limit=5120&name=[name]-[hash:6].[ext]',
         },
       ],

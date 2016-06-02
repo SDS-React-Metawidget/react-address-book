@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import 'app/assets/stylus/reset.styl';
 import './styles.styl';
 

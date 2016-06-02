@@ -18,7 +18,7 @@ export default class SearchPanel extends Component {
 
   getContacts = () => {
     return objectSearch(Object.values(this.props.contacts), this.props.filter);
-  }
+  };
 
   render() {
     return (

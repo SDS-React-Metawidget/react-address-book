@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "lodash": "^4.11.0",
+    "metawidget": "^4.2.0",
     "nodemon": "^1.9.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -60,7 +61,7 @@
     "redux-async-connect": "^0.1.13",
     "redux-thunk": "^2.0.1",
     "source-map-support": "^0.4.0",
-    "uncamelcase": "0.0.2",
+    "uncamelcase": "^0.0.2",
     "uuid": "^2.0.2"
   }
 }

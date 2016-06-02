@@ -21,9 +21,9 @@ export default class SearchPanel extends Component {
   };
 
   static defaultProps = {
-    firstName: ' ',
-    lastName: ' ',
-    details: ' ',
+    firstName: '',
+    lastName: '',
+    details: '',
   };
 
   save = () => {
@@ -41,7 +41,6 @@ export default class SearchPanel extends Component {
   render() {
     const { firstName, lastName, details } = this.props;
     const toInspect = { firstName, lastName, details, save: this.save };
-    console.log(toInspect);
     return (
       <div>
         <Metawidget

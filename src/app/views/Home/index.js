@@ -33,7 +33,9 @@ export default class HomeView extends Component { // eslint-disable-line react/p
 
         <ContactsPanel filter={filter} />
         
-        <Link className="btn btn-default" to="/contact">Add New Contact</Link>
+        <Link className="btn btn-default" to="/contact">
+          <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;
+          <span>Add New Contact</span></Link>
 
       </div>
     );

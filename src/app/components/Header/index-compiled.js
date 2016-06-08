@@ -67,8 +67,8 @@ var HeaderPanel = function (_Component) {
 																		'li',
 																		{ className: 'active' },
 																		_react2.default.createElement(
-																				'a',
-																				{ href: '#' },
+																				_reactRouter.Link,
+																				{ to: '/' },
 																				'Home'
 																		)
 																),
@@ -76,8 +76,8 @@ var HeaderPanel = function (_Component) {
 																		'li',
 																		null,
 																		_react2.default.createElement(
-																				'a',
-																				{ href: '#add' },
+																				_reactRouter.Link,
+																				{ to: '/contact' },
 																				'Add Contact'
 																		)
 																)

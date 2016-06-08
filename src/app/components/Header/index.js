@@ -8,7 +8,6 @@ import styles from './styles.styl';
 //  search,
 //})
 export default class HeaderPanel extends Component {
-  
   render() {
     return (
     <div>
@@ -17,8 +16,12 @@ export default class HeaderPanel extends Component {
 				<div className="navbar-header">Contacts</div>
 				<div className="navbar-collapse collapse">
 				  <ul className="nav navbar-nav">
-				    <li className="active"><a href="#">Home</a></li>
-				    <li><a href="#add">Add Contact</a></li>
+				    <li className="active">
+              <Link to="/">Home</Link>
+            </li>
+				    <li>
+              <Link to="/contact">Add Contact</Link>
+            </li>
 				  </ul>
 				</div>
 			</div>

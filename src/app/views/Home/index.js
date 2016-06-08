@@ -27,15 +27,17 @@ export default class HomeView extends Component { // eslint-disable-line react/p
 
         <div className="page-header">
           <h1>Home</h1>
+          <img className={styles.img} src={addressBookImg} />
         </div>
-            
+
         <SearchPanel />
 
         <ContactsPanel filter={filter} />
-        
+
         <Link className="btn btn-default" to="/contact">
           <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;
-          <span>Add New Contact</span></Link>
+          <span>Add New Contact</span>
+        </Link>
 
       </div>
     );

@@ -52,7 +52,7 @@ var SearchPanel = (_dec = (0, _reactRedux.connect)(null, {
       var firstName = (0, _reactDom.findDOMNode)(_this.refs.fname).value;
       var lastName = (0, _reactDom.findDOMNode)(_this.refs.lname).value;
       var details = (0, _reactDom.findDOMNode)(_this.refs.details).value;
-      var type = (0, _reactDom.findDOMNode)(_this.refs.contacttype).value;
+      var type = (0, _reactDom.findDOMNode)(_this.refs.type).value;
       var title = (0, _reactDom.findDOMNode)(_this.refs.title).value;
       var email = (0, _reactDom.findDOMNode)(_this.refs.email).value;
       var phone = (0, _reactDom.findDOMNode)(_this.refs.phone).value;
@@ -63,7 +63,9 @@ var SearchPanel = (_dec = (0, _reactRedux.connect)(null, {
       if (_this.props.id) {
         _this.props.updateContact(_this.props.id, stuff);
       } else {
-        _this.props.addContact(stuff);
+        var ret = _this.props.addContact(stuff);
+        alert(JSON.stringify(ret));
+        console.log(ret);
       }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -119,7 +121,7 @@ var SearchPanel = (_dec = (0, _reactRedux.connect)(null, {
             '\u2028',
             _react2.default.createElement(
               'select',
-              { className: _cool2.default.form_select, id: 'title', ref: 'title', defaultValue: title },
+              { className: _cool2.default.form_select, id: 'title', ref: 'title', defaultValue: title || 'Miss' },
               _react2.default.createElement(
                 'option',
                 { value: 'Mr' },
@@ -157,7 +159,7 @@ var SearchPanel = (_dec = (0, _reactRedux.connect)(null, {
             ),
             _react2.default.createElement(
               'select',
-              { className: _cool2.default.form_select, id: 'contacttype', ref: 'contacttype', defaultValue: type },
+              { className: _cool2.default.form_select, id: 'type', ref: 'type', defaultValue: type },
               _react2.default.createElement(
                 'option',
                 { value: 'Personal' },

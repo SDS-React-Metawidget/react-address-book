@@ -28,7 +28,7 @@ export default class SearchPanel extends Component {
     const firstName = findDOMNode(this.refs.fname).value;
     const lastName = findDOMNode(this.refs.lname).value;
     const details = findDOMNode(this.refs.details).value;
-    const type = findDOMNode(this.refs.contacttype).value;
+    const type = findDOMNode(this.refs.type).value;
     const title = findDOMNode(this.refs.title).value;
     const email = findDOMNode(this.refs.email).value;
     const phone = findDOMNode(this.refs.phone).value;
@@ -39,7 +39,9 @@ export default class SearchPanel extends Component {
     if(this.props.id) {
       this.props.updateContact(this.props.id, stuff);
     } else {
-      this.props.addContact(stuff);
+      const ret = this.props.addContact(stuff);
+      alert(JSON.stringify(ret));
+      console.log(ret);
     }
 
   }
@@ -63,7 +65,7 @@ export default class SearchPanel extends Component {
 
           <div className="form-group col-md-4"> 
             <label htmlFor="title">Title:</label> 
-            <select className={styles.form_select} id="title" ref="title" defaultValue={title}>
+            <select className={styles.form_select} id="title" ref="title" defaultValue={title || `Miss`}>
               <option value="Mr">Mr</option>
               <option value="Mrs">Mrs</option>
               <option value="Miss">Miss</option>
@@ -76,7 +78,7 @@ export default class SearchPanel extends Component {
         <div className="row">
           <div className="form-group col-md-4">
             <label htmlFor="contacttype">Contact Type:</label>
-            <select className={styles.form_select} id="contacttype" ref="contacttype" defaultValue={type}>
+            <select className={styles.form_select} id="type" ref="type" defaultValue={type}>
               <option value="Personal" >Personal</option>
               <option value="Business" >Business</option>
             </select>

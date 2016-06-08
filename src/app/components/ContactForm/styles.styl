@@ -1,4 +1,4 @@
-.form_input
+.input
   width 100%
   display block
   border 2px solid rgb(175, 175, 175)
@@ -6,24 +6,32 @@
   padding 10px
   outline 0
   transition border-color 0.25s
-  &:hover, &:focus
+
+  &:hover
+  &:focus
     border-color rgb(80, 80, 80)
-.form_field
-  @extend .form_input
+
+.field
+  composes: input
   margin 0 0 10px 0
   min-height 200px
-.form_select
-  @extend .form_input
+
+.select
+  composes: input
   height 44px
   background #fff
   border-radius 0px
+
   &:hover
     cursor pointer
+
 .marginBottom
   margin-bottom 10px
-.button_wrapper
+
+.buttonWrapper
   text-align center
-  & > button
+
+  > button
     margin 5px auto
     width 80%
     max-width 100px

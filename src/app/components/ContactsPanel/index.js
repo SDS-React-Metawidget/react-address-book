@@ -23,23 +23,22 @@ export default class SearchPanel extends Component {
   render() {
     return (
       <table className="table table-striped">
-        
         <thead>
           <tr>
             <th>Name</th>
+            <th>Type</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Address</th>
             <th>Details</th>
             <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
-        {this.getContacts().map((contact) => {
-          return (
-            <Contact
-              key={contact.id}
-              {...contact} />
-          );
-        })}
+          {this.getContacts().map((contact) => (
+            <Contact key={contact.id} {...contact} />
+          ))}
         </tbody>
       </table>
     );

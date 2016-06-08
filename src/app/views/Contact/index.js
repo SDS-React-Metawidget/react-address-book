@@ -41,7 +41,7 @@ export default class ContactView extends Component { // eslint-disable-line reac
       <span><Link to={`/contact/${id}`}>{lastName}, {firstName}</Link></span>
     </td>
     <td>{details}</td>
-    
+
     Keep the Helment element and try adding Bootstrap button classes to the Link
     elements.
 
@@ -54,12 +54,11 @@ export default class ContactView extends Component { // eslint-disable-line reac
         <Helmet title="Viewing contact | React Address Book" />
 
         <div className="container">
+
           <div className="row">
-            
-         
 
             <div className="row page-header">
-              
+
               <div className="col-md-4 text-center">
                 <div className="panel panel-default">
                   <div className="panel-body">
@@ -108,14 +107,14 @@ export default class ContactView extends Component { // eslint-disable-line reac
                 <div className="col-md-4 text-right"><p><strong>Address:</strong></p></div>
                 <div className="col-md-8">
                   <p>
-                    <address>15 Broadway,<br/>
+                    <address>15 Broadway,<br />
                       Ultimo NSW 2007
                     </address>
                   </p>
                 </div>
               </div>
 
-              <hr/>
+              <hr />
 
           </div>
 

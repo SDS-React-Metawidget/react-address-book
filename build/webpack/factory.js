@@ -73,8 +73,10 @@ export default function webpackFactory(config, appConfig) {
     target: { client: 'web', server: 'node' }[config.type],
 
     externals: [config.type === 'server' && nodeExternals({
-      whitelist: ['bootstrap/dist/css/bootstrap.css',
-                  'bootstrap/dist/css/bootstrap-theme.css'],
+      whitelist: [
+        'bootstrap/dist/css/bootstrap.css',
+        'bootstrap/dist/css/bootstrap-theme.css',
+      ],
     })].filter(identity),
 
     devtool: config.debug || config.type === 'server' ? 'cheap-module-inline-source-map' : 'hidden-source-map',

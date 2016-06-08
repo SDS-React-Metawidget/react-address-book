@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 
-import { selectContact } from 'app/actions/contact';
 import ContactForm from 'app/components/ContactForm';
+import styles from './styles.styl';
 
-// import styles from './styles.styl';
 export default class EditContactView extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -18,7 +17,9 @@ export default class EditContactView extends Component { // eslint-disable-line 
 
         <ContactForm />
 
-        <Link className="btn btn-default" to="/">Home</Link>
+        <div className={styles.buttonWrapper}>
+          <Link className="btn btn-default" to="/">Home</Link>
+        </div>
       </div>
     );
   }

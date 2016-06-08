@@ -11,8 +11,14 @@ export default class EditContactView extends Component { // eslint-disable-line 
     return (
       <div>
         <Helmet title="Creating new contact | React Address Book" />
-        <Link to="/">Home</Link>
+
+        <div className="page-header">
+          <h1>Add Contact</h1>
+        </div>
+
         <ContactForm />
+
+        <Link className="btn btn-default" to="/">Home</Link>
       </div>
     );
   }

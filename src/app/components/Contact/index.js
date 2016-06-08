@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import Remove from './remove';
+import Remove from './Remove';
 
 const Contact = ({ id, firstName, lastName, details }) => {
   return (
     <tr>
       <td>
-        <span><Link to={`/contact/${id}`}>{lastName}, {firstName}</Link></span>
+        <span>
+          <Link to={`/contact/${id}`}>{lastName}, {firstName}</Link>
+        </span>
       </td>
       <td>{details}</td>
       <td><Remove id={id} /></td>

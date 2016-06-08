@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 
-import { selectContact } from 'app/actions/contact';
 import ContactForm from 'app/components/ContactForm';
 import styles from './styles.styl';
 
@@ -18,7 +17,7 @@ export default class EditContactView extends Component { // eslint-disable-line 
 
         <ContactForm />
 
-        <div className={styles.button_wrapper}>
+        <div className={styles.buttonWrapper}>
           <Link className="btn btn-default" to="/">Home</Link>
         </div>
       </div>

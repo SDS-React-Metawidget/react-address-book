@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 import { addContact, updateContact } from 'app/actions/contacts';
 
@@ -26,7 +27,8 @@ export default class SearchPanel extends Component {
   };
 
   save = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent button from triggering a page load when inside the form
+
     const firstName = findDOMNode(this.refs.fname).value;
     const lastName = findDOMNode(this.refs.lname).value;
     const details = findDOMNode(this.refs.details).value;
@@ -36,13 +38,14 @@ export default class SearchPanel extends Component {
     const phone = findDOMNode(this.refs.phone).value;
     const address = findDOMNode(this.refs.address).value;
 
-    // New fields
     const fields = { firstName, lastName, details, type, title, email, phone, address };
     if (this.props.id) {
       this.props.updateContact(this.props.id, fields);
     } else {
       this.props.addContact(fields);
     }
+
+    browserHistory.push('/');
   }
 
   render() {

@@ -1,0 +1,39 @@
+.input
+  width 100%
+  display block
+  border 2px solid rgb(175, 175, 175)
+  transition border-color 0.25s
+  padding 10px
+  outline 0
+  transition border-color 0.25s
+
+  &:hover
+  &:focus
+    border-color rgb(80, 80, 80)
+
+.field
+  composes: input
+  margin 0 0 10px 0
+  min-height 200px
+
+.select
+  composes: input
+  height 44px
+  background #fff
+  border-radius 0px
+
+  &:hover
+    cursor pointer
+
+.marginBottom
+  margin-bottom 10px
+
+.buttonWrapper
+  text-align center
+
+  > button
+    margin 5px auto
+    width 80%
+    max-width 100px
+
+

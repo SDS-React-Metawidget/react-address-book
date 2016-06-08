@@ -26,6 +26,10 @@ export default class SearchPanel extends Component {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Type</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Address</th>
             <th>Details</th>
             <th>Action</th>
           </tr>

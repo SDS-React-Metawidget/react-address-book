@@ -19,20 +19,26 @@ export default class HomeView extends Component { // eslint-disable-line react/p
   static propTypes = {
     filter: PropTypes.object,
   };
-
   render() {
     const { filter } = this.props;
     return (
       <div>
         <Helmet title="Home | React Address Book" />
-        <div className={styles.top}>
+
+        <div className="page-header">
+          <h1>Home</h1>
           <img className={styles.img} src={addressBookImg} />
-          <SearchPanel />
         </div>
-        <div>
-          <Link to="/contact">Add New Contact</Link>
-        </div>
+
+        <SearchPanel />
+
         <ContactsPanel filter={filter} />
+
+        <Link className="btn btn-default" to="/contact">
+          <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;
+          <span>Add New Contact</span>
+        </Link>
+
       </div>
     );
   }

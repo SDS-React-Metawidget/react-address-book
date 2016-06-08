@@ -2,9 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { connect } from 'react-redux';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import Header from 'app/components/Header';
+
 import 'app/assets/stylus/reset.styl';
-import './styles.styl';
+import styles from './styles.styl';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 
 @asyncConnect({
@@ -31,8 +34,11 @@ export default class App extends Component { // eslint-disable-line react/prefer
 
   render() {
     return (
-      <div>
-        {this.props.children}
+      <div className={styles.root}>
+        <Header />
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }

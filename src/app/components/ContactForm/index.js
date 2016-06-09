@@ -103,7 +103,7 @@ export default class SearchPanel extends Component {
           {details}
         </textarea>
         <br />
-        <div className={styles.button_wrapper}>
+        <div className={styles.buttonWrapper}>
           <button className="btn btn-default" onClick={this.save}>Save</button>
         </div>
       </form>

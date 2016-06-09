@@ -69,7 +69,7 @@ export default class SearchPanel extends Component {
               <option value="Mr">Mr</option>
               <option value="Mrs">Mrs</option>
               <option value="Miss">Miss</option>
-              <option value="Ms" >Ms</option>
+              <option value="Ms">Ms</option>
             </select>
           </div>
 

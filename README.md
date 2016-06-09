@@ -7,7 +7,7 @@ A React Address Book example for the UTS Software Development Studio
 Make sure you're using Mac/Linux. Many of the npm dependencies for this project don't play nicely with Windows.
 
 Make sure you have [Node Version Manager](https://github.com/creationix/nvm) (nvm) installed.
-Run `nvm install 5.10` to install the latest version of Nodejs. You only need to do this once.
+Run `nvm install 5.11` to install the latest version of Nodejs. You only need to do this once.
 
 Once you've cloned this repository locally, run `npm install`. This will grab all of the external dependencies for this project. From time to time you may need to run this again.
 
